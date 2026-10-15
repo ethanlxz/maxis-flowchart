@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-ecosystem-20261015-221059\\candidate.json",
+    "sha256": "cde399d670a5013fe7dc2c478cd2baf91a4a2bdc1a70ff7ab026e977073b7209",
+    "bytes": 3943
+  },
+  "artifact": {
+    "path": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-ecosystem-20261015-221059\\maxis-ecosystem.html",
+    "sha256": "e57fe14bfeafb70233b22b80e1d696e41d37e5e14fc5d96369a36ba69c1b3a1e",
+    "bytes": 819927
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-ecosystem-20261015-221059\\maxis-ecosystem.finalize.json",
+    "summaryReceipt": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-ecosystem-20261015-221059\\maxis-ecosystem.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-ecosystem-20261015-221059\\maxis-ecosystem.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.1.0",
+    "availableVersion": "3.1.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-15T14:03:06.327Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 10676
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "e4d1fa01-b79b-4e2d-964b-0f6ce866aeb7",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-uv-prototype-20261015-220618\\candidate.json",
+  "output": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-uv-prototype-20261015-220618\\maxis-uv-prototype.html",
+  "specification": {
+    "sha256": "c8d7e46ea4e4d364c7a4bcf5096d3fda6ee1a3610c49c7c6463af95e5efa66b8",
+    "bytes": 8592
+  },
+  "artifact": {
+    "sha256": "88f2c80deeccdadb9167464d0e50bf0a263c8927b1a0e3c56ce5e8fbe6aeca79",
+    "bytes": 843075
+  }
+}

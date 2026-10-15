@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "MAXIS | Circular Water Ecosystem",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-maxis-ecosystem-20261015-221059/maxis-ecosystem.html",
+    "legend": { "entries": {
+      "external": { "label": "Recovered resources" },
+      "backend": { "label": "Treatment" },
+      "security": { "label": "Validation" },
+      "frontend": { "label": "Reuse and monitoring" },
+      "cloud": { "label": "Solar assistance" }
+    } }
+  },
+  "lanes": [
+    { "id": "circular", "label": "01  Give plastic a new role" },
+    { "id": "water", "label": "02  Recover water for the township" },
+    { "id": "enablers", "label": "03  Support and monitor operation" }
+  ],
+  "mainPath": ["sources", "membrane", "photocatalysis", "validation", "reuse"],
+  "nodes": [
+    { "id": "plastic", "lane": "circular", "col": 0, "type": "external", "icon": "start", "label": "Recovered plastic", "sublabel": "suitable waste polymers" },
+    { "id": "material", "lane": "circular", "col": 1, "type": "security", "label": "Membrane material", "sublabel": "process + characterize" },
+    { "id": "sources", "lane": "water", "col": 0, "type": "external", "icon": "start", "label": "Greywater + rain", "sublabel": "collect + pretreat" },
+    { "id": "membrane", "lane": "water", "col": 1, "type": "backend", "label": "Membrane filtration", "sublabel": "waste-derived polymer", "tag": "Innovation 1" },
+    { "id": "photocatalysis", "lane": "water", "col": 2, "type": "backend", "label": "UV / TiO2 stage", "sublabel": "proposed photocatalysis", "tag": "Innovation 2" },
+    { "id": "validation", "lane": "water", "col": 3, "type": "security", "icon": "decision", "label": "Quality validation", "sublabel": "hold if fail / unknown" },
+    { "id": "reuse", "lane": "water", "col": 4, "type": "frontend", "icon": "success", "label": "Non-potable reuse", "sublabel": "irrigation / flushing", "tag": "Also maintenance" },
+    { "id": "solar", "lane": "enablers", "col": 1, "type": "cloud", "icon": "neutral", "label": "Solar assistance", "sublabel": "eligible system loads" },
+    { "id": "iot", "lane": "enablers", "col": 2, "type": "frontend", "label": "IoT + dashboard", "sublabel": "water / energy / condition" }
+  ],
+  "edges": [
+    { "id": "plastic-material", "from": "plastic", "to": "material" },
+    { "id": "material-filter", "from": "material", "to": "membrane", "label": "if suitable", "variant": "security", "role": "branch" },
+    { "id": "water-filter", "from": "sources", "to": "membrane", "variant": "emphasis", "role": "main" },
+    { "id": "filter-uv", "from": "membrane", "to": "photocatalysis", "variant": "emphasis", "role": "main" },
+    { "id": "uv-test", "from": "photocatalysis", "to": "validation", "variant": "emphasis", "role": "main" },
+    { "id": "test-reuse", "from": "validation", "to": "reuse", "label": "Pass only", "variant": "emphasis", "role": "main" },
+    { "id": "solar-support", "from": "solar", "to": "membrane", "label": "assist loads", "role": "branch" },
+    { "id": "water-monitor", "from": "photocatalysis", "to": "iot", "label": "system data", "role": "branch" }
+  ],
+  "cards": [
+    { "dot": "emerald", "title": "One connected ecosystem", "items": ["Plastic recovery supplies candidate membrane materials. Collected greywater and rainwater become potential non-potable resources after treatment and validation."] },
+    { "dot": "violet", "title": "Two proposed innovations", "items": ["Waste-derived polymer membranes + UV-assisted TiO2 photocatalysis. Treatment benefits, membrane cleaning effects and safe reuse require experimental validation."] },
+    { "dot": "amber", "title": "Solar and IoT support the whole system", "items": ["Solar assists eligible pump, UV and sensor loads. IoT tracks flow, pressure, levels, energy and membrane-condition indicators; the prototype below shows the details."] }
+  ]
+}

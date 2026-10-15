@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "4d13f04e-a56e-437b-b16b-05a8dd6f61e9",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-water-recovery-20261015-220136\\candidate.json",
+  "output": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-water-recovery-20261015-220136\\maxis-water-recovery.html",
+  "specification": {
+    "sha256": "d94ed75e79006edbda0510ca0663f75ba23949a23f64350567099faf97f7793e",
+    "bytes": 6920
+  },
+  "artifact": {
+    "sha256": "dfe1ca4df2e91f26f105edbc67c9ce41ea04b7898e73347207ed424b757046f3",
+    "bytes": 835396
+  }
+}

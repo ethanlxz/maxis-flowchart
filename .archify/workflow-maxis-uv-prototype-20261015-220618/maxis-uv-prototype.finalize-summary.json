@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-uv-prototype-20261015-220618\\candidate.json",
+    "sha256": "c8d7e46ea4e4d364c7a4bcf5096d3fda6ee1a3610c49c7c6463af95e5efa66b8",
+    "bytes": 8592
+  },
+  "artifact": {
+    "path": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-uv-prototype-20261015-220618\\maxis-uv-prototype.html",
+    "sha256": "88f2c80deeccdadb9167464d0e50bf0a263c8927b1a0e3c56ce5e8fbe6aeca79",
+    "bytes": 843075
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-uv-prototype-20261015-220618\\maxis-uv-prototype.finalize.json",
+    "summaryReceipt": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-uv-prototype-20261015-220618\\maxis-uv-prototype.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\ethan\\OneDrive\\Documents\\etlaw\\maxis flowchart\\.archify\\workflow-maxis-uv-prototype-20261015-220618\\maxis-uv-prototype.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.1.0",
+    "availableVersion": "3.1.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-15T14:03:06.327Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 10582
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "MAXIS | Membrane + UV Photocatalysis Prototype",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-maxis-uv-prototype-20261015-220618/maxis-uv-prototype.html",
+    "legend": { "entries": {
+      "external": { "label": "Recovered materials" },
+      "backend": { "label": "Treatment and experiments" },
+      "security": { "label": "Validation and hold" },
+      "database": { "label": "Water storage" },
+      "frontend": { "label": "Dashboard and reuse" },
+      "cloud": { "label": "Renewable energy" },
+      "messagebus": { "label": "Measurements and control" }
+    } }
+  },
+  "lanes": [
+    { "id": "materials", "label": "01  Circular material pathway" },
+    { "id": "water", "label": "02  Controlled water treatment" },
+    { "id": "release", "label": "03  Measurements + controlled reuse" },
+    { "id": "digital", "label": "04  Energy + digital demonstration" }
+  ],
+  "mainPath": ["feed", "pump", "membrane", "uv", "quality", "storage", "reuse"],
+  "nodes": [
+    { "id": "plastic", "lane": "materials", "col": 0, "type": "external", "icon": "start", "label": "Recovered plastic", "sublabel": "suitable polystyrene" },
+    { "id": "prepare", "lane": "materials", "col": 1, "type": "backend", "label": "Prepare + fabricate", "sublabel": "circular material route" },
+    { "id": "module", "lane": "materials", "col": 2, "type": "security", "label": "Characterized module", "sublabel": "existing recycled PS", "tag": "MVP starts here" },
+    { "id": "uv-suitability", "lane": "materials", "col": 3, "type": "security", "icon": "decision", "label": "UV / TiO2 suitability", "sublabel": "formulation + exposure" },
+    { "id": "feed", "lane": "water", "col": 0, "type": "database", "label": "Feedwater tank", "sublabel": "representative test water", "tag": "Greywater / rainwater" },
+    { "id": "pump", "lane": "water", "col": 1, "type": "backend", "label": "Pretreat + pump", "sublabel": "controlled feed flow" },
+    { "id": "membrane", "lane": "water", "col": 2, "type": "backend", "label": "Membrane filtration", "sublabel": "recycled PS in holder", "tag": "Innovation 1" },
+    { "id": "uv", "lane": "water", "col": 3, "type": "backend", "label": "UV + TiO2 test stage", "sublabel": "controlled illumination", "tag": "Innovation 2: proposed" },
+    { "id": "quality", "lane": "water", "col": 4, "type": "security", "icon": "decision", "label": "Water quality valid?", "sublabel": "for intended reuse" },
+    { "id": "storage", "lane": "water", "col": 5, "type": "database", "label": "Recovered water", "sublabel": "non-potable storage" },
+    { "id": "sensors", "lane": "release", "col": 2, "type": "messagebus", "label": "Water-system sensors", "sublabel": "flow / pressure / levels", "tag": "Fouling indicators" },
+    { "id": "hold", "lane": "release", "col": 4, "type": "security", "icon": "waiting", "label": "Hold + investigate", "sublabel": "re-treat as required", "tag": "No reuse release" },
+    { "id": "reuse", "lane": "release", "col": 5, "type": "frontend", "icon": "success", "label": "Township reuse", "sublabel": "irrigation / flushing", "tag": "Also maintenance" },
+    { "id": "pv", "lane": "digital", "col": 0, "type": "cloud", "icon": "neutral", "label": "Small PV system", "sublabel": "renewable assistance" },
+    { "id": "energy", "lane": "digital", "col": 1, "type": "messagebus", "label": "Power monitoring", "sublabel": "generation + load use", "tag": "Pump / UV / sensors" },
+    { "id": "esp32", "lane": "digital", "col": 2, "type": "messagebus", "label": "ESP32 controller", "sublabel": "acquire + communicate" },
+    { "id": "dashboard", "lane": "digital", "col": 3, "type": "frontend", "label": "Computer dashboard", "sublabel": "water / energy / fouling", "tag": "Simulated forecasts" },
+    { "id": "experiments", "lane": "digital", "col": 4, "type": "backend", "label": "Compare test runs", "sublabel": "UV on/off + schedules", "tag": "Measure outcomes" }
+  ],
+  "edges": [
+    { "id": "plastic-prepare", "from": "plastic", "to": "prepare" },
+    { "id": "prepare-module", "from": "prepare", "to": "module" },
+    { "id": "module-holder", "from": "module", "to": "membrane", "label": "install", "variant": "security", "role": "branch" },
+    { "id": "formulation-check", "from": "module", "to": "uv-suitability", "label": "evaluate", "role": "branch" },
+    { "id": "uv-if-suitable", "from": "uv-suitability", "to": "uv", "label": "if suitable", "variant": "security", "role": "branch" },
+    { "id": "feed-pump", "from": "feed", "to": "pump", "variant": "emphasis", "role": "main" },
+    { "id": "pump-membrane", "from": "pump", "to": "membrane", "variant": "emphasis", "role": "main" },
+    { "id": "membrane-uv", "from": "membrane", "to": "uv", "label": "filtrate", "variant": "emphasis", "role": "main" },
+    { "id": "uv-quality", "from": "uv", "to": "quality", "variant": "emphasis", "role": "main" },
+    { "id": "quality-pass", "from": "quality", "to": "storage", "label": "Pass", "variant": "emphasis", "role": "main" },
+    { "id": "quality-hold", "from": "quality", "to": "hold", "label": "Fail / unknown", "variant": "security", "role": "error" },
+    { "id": "storage-reuse", "from": "storage", "to": "reuse", "variant": "emphasis", "role": "main" },
+    { "id": "process-signals", "from": "membrane", "to": "sensors", "label": "measure", "role": "branch" },
+    { "id": "sensor-acquisition", "from": "sensors", "to": "esp32", "label": "readings", "role": "branch" },
+    { "id": "pv-metering", "from": "pv", "to": "energy", "label": "meter", "role": "branch" },
+    { "id": "energy-acquisition", "from": "energy", "to": "esp32", "label": "energy data", "role": "branch" },
+    { "id": "live-display", "from": "esp32", "to": "dashboard", "label": "telemetry", "role": "branch" },
+    { "id": "compare-results", "from": "dashboard", "to": "experiments", "label": "log + compare", "role": "branch" }
+  ],
+  "cards": [
+    { "dot": "emerald", "title": "MVP scope and circulation", "items": ["Start with an existing recycled-polystyrene membrane module, feed tank, controlled pump, holder and sensors. Upstream fabrication shows the wider circular concept.", "Representative greywater/rainwater test water is used under controlled conditions. Define the test-loop return and sample collection during physical assembly."] },
+    { "dot": "violet", "title": "Innovation 2: UV-assisted photocatalysis", "items": ["Proposed downstream UV/TiO2 stage follows membrane filtration. Use a compatible catalyst configuration and controlled UV exposure.", "Proposed mechanism: sufficient-energy light activates TiO2, producing electron-hole pairs and reactive species that may degrade selected organics.", "Compare matched UV-on and UV-off runs. Record pollutant removal, flux, fouling indicators and flux recovery; improvements are experimental questions."] },
+    { "dot": "cyan", "title": "Membrane self-cleaning is a separate test", "items": ["A downstream treatment result alone does not establish membrane self-cleaning. Define how UV reaches the selected photocatalytic membrane when testing membrane-local effects.", "Check membrane/catalyst compatibility and stability. Reduced chemical-cleaning demand requires suitable comparative experiments.", "Background: Proof of Concept for Light Conducting Membrane Substrate for UV-Activated Photocatalysis as an Alternative to Chemical Cleaning (2018), https://pmc.ncbi.nlm.nih.gov/articles/PMC6315485/"] },
+    { "dot": "amber", "title": "Energy integration and operating schedules", "items": ["Meter solar generation and electrical use of the pump, UV equipment and sensors; quantify grid demand where grid support is used.", "Compare operating schedules, including treatment during favourable solar generation. Reduced grid demand is a measured outcome, not an assumed benefit.", "Dashboard demonstration: heavy rainfall, low solar generation, low storage and increased fouling, with simulated weather forecasts clearly identified."] },
+    { "dot": "rose", "title": "Validate before making reuse claims", "items": ["Water levels, flow, pressure, energy use and membrane-condition indicators feed the ESP32 or equivalent controller and computer dashboard.", "Safe non-potable reuse, photocatalytic efficacy and reduced chemical use require suitable experimental validation. IoT readings alone do not establish reuse safety.", "Failed or unknown quality remains on hold; potential reuse is irrigation, toilet flushing and township maintenance only after validation."] }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "MAXIS | Circular Township Water Recovery",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-maxis-water-recovery-20261015-220136/maxis-water-recovery.html",
+    "legend": {
+      "entries": {
+        "external": { "label": "Resource inputs" },
+        "backend": { "label": "Processing and treatment" },
+        "security": { "label": "Validation and hold" },
+        "database": { "label": "Water storage" },
+        "frontend": { "label": "Monitoring and reuse" },
+        "cloud": { "label": "Solar assistance" },
+        "messagebus": { "label": "Sensors and controls" }
+      }
+    }
+  },
+  "lanes": [
+    { "id": "materials", "label": "01  Circular membrane materials" },
+    { "id": "treatment", "label": "02  Decentralized water recovery" },
+    { "id": "release", "label": "03  Controlled non-potable reuse" },
+    { "id": "support", "label": "04  Solar assistance + IoT" }
+  ],
+  "mainPath": ["water-inputs", "collection", "pretreatment", "membrane", "quality-gate", "recovered-tank", "township-reuse"],
+  "nodes": [
+    { "id": "plastic-waste", "lane": "materials", "col": 0, "type": "external", "icon": "start", "label": "Plastic waste", "sublabel": "recovered feedstock" },
+    { "id": "polymer-selection", "lane": "materials", "col": 1, "type": "backend", "label": "Select + prepare", "sublabel": "suitable polymers" },
+    { "id": "membrane-fabrication", "lane": "materials", "col": 2, "type": "backend", "label": "Form membrane", "sublabel": "candidate material" },
+    { "id": "material-validation", "lane": "materials", "col": 3, "type": "security", "icon": "decision", "label": "Characterize + test", "sublabel": "verify suitability", "tag": "Before installation" },
+    { "id": "water-inputs", "lane": "treatment", "col": 0, "type": "external", "icon": "start", "label": "Greywater + rain", "sublabel": "township collection" },
+    { "id": "collection", "lane": "treatment", "col": 1, "type": "database", "label": "Collection tank", "sublabel": "buffer incoming water" },
+    { "id": "pretreatment", "lane": "treatment", "col": 2, "type": "backend", "label": "Pretreatment", "sublabel": "match source quality" },
+    { "id": "membrane", "lane": "treatment", "col": 3, "type": "backend", "label": "Membrane filtration", "sublabel": "waste-derived polymer", "tag": "Core innovation" },
+    { "id": "quality-gate", "lane": "treatment", "col": 4, "type": "security", "icon": "decision", "label": "Water quality valid?", "sublabel": "for intended reuse", "tag": "Test before release" },
+    { "id": "recovered-tank", "lane": "treatment", "col": 5, "type": "database", "label": "Recovered water", "sublabel": "non-potable storage" },
+    { "id": "hold-water", "lane": "release", "col": 4, "type": "security", "icon": "waiting", "label": "Hold water", "sublabel": "re-treat / investigate", "tag": "No reuse release" },
+    { "id": "township-reuse", "lane": "release", "col": 5, "type": "frontend", "icon": "success", "label": "Township reuse", "sublabel": "irrigation + flushing", "tag": "Also maintenance" },
+    { "id": "solar-input", "lane": "support", "col": 1, "type": "cloud", "icon": "neutral", "label": "Solar PV", "sublabel": "assisted operation" },
+    { "id": "eligible-loads", "lane": "support", "col": 2, "type": "messagebus", "label": "Eligible low-energy loads", "sublabel": "sensors + controls" },
+    { "id": "iot-sensing", "lane": "support", "col": 3, "type": "messagebus", "label": "IoT monitoring", "sublabel": "flow / pressure / levels", "tag": "Quality indicators" },
+    { "id": "operator-view", "lane": "support", "col": 4, "type": "frontend", "label": "Operator dashboard", "sublabel": "trends + alerts" }
+  ],
+  "edges": [
+    { "id": "plastic-preparation", "from": "plastic-waste", "to": "polymer-selection" },
+    { "id": "prepare-form", "from": "polymer-selection", "to": "membrane-fabrication" },
+    { "id": "form-test", "from": "membrane-fabrication", "to": "material-validation" },
+    { "id": "qualified-install", "from": "material-validation", "to": "membrane", "label": "if suitable", "variant": "security", "role": "branch" },
+    { "id": "collect-water", "from": "water-inputs", "to": "collection", "variant": "emphasis", "role": "main" },
+    { "id": "feed-pretreatment", "from": "collection", "to": "pretreatment", "variant": "emphasis", "role": "main" },
+    { "id": "feed-membrane", "from": "pretreatment", "to": "membrane", "variant": "emphasis", "role": "main" },
+    { "id": "test-permeate", "from": "membrane", "to": "quality-gate", "variant": "emphasis", "role": "main" },
+    { "id": "release-valid-water", "from": "quality-gate", "to": "recovered-tank", "label": "Pass", "variant": "emphasis", "role": "main" },
+    { "id": "hold-invalid-water", "from": "quality-gate", "to": "hold-water", "label": "Fail / unknown", "variant": "security", "role": "error" },
+    { "id": "reuse-supply", "from": "recovered-tank", "to": "township-reuse", "variant": "emphasis", "role": "main" },
+    { "id": "solar-assist", "from": "solar-input", "to": "eligible-loads", "label": "assist", "role": "branch" },
+    { "id": "power-iot", "from": "eligible-loads", "to": "iot-sensing", "label": "power", "role": "branch" },
+    { "id": "system-telemetry", "from": "membrane", "to": "iot-sensing", "label": "system signals", "role": "branch" },
+    { "id": "monitoring-display", "from": "iot-sensing", "to": "operator-view", "label": "data", "role": "branch" }
+  ],
+  "cards": [
+    { "dot": "emerald", "title": "Proposed hackathon prototype", "items": ["MAXIS connects plastic recovery, decentralized water treatment, solar assistance and IoT monitoring.", "Concept based on the supplied project description; performance and reuse suitability remain to be demonstrated."] },
+    { "dot": "cyan", "title": "Membrane is the core innovation", "items": ["Select suitable waste polymers, fabricate candidate membranes and characterize them before use.", "Material suitability and treatment performance require validation; recovered plastic is not automatically membrane-ready."] },
+    { "dot": "rose", "title": "Release only after validation", "items": ["Check treated water against the requirements of each intended non-potable use; add treatment where required.", "Failed or unknown quality stays on hold. Sensor indicators support operation and do not replace water-quality validation.", "Plan membrane cleaning, residuals handling and end-of-life management during prototype development."] },
+    { "dot": "amber", "title": "Supporting systems", "items": ["Solar assists eligible low-energy components; full solar-powered treatment is not assumed.", "IoT tracks flow, pressure, tank levels and water-quality indicators across the water system.", "Potential uses: landscape irrigation, toilet flushing and township maintenance, subject to validation."] }
+  ]
+}

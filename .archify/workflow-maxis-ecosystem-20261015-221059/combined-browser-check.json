@@ -1,0 +1,76 @@
+{
+  "ok": true,
+  "errors": [],
+  "measurements": [
+    {
+      "width": 1440,
+      "pageWidth": 1440,
+      "frames": [
+        {
+          "title": "MAXIS high-level ecosystem flowchart",
+          "height": 1430,
+          "contentHeight": 1430,
+          "contentWidth": 1440,
+          "viewportWidth": 1440,
+          "diagrams": 1
+        },
+        {
+          "title": "MAXIS detailed membrane and UV prototype flowchart",
+          "height": 1840,
+          "contentHeight": 1840,
+          "contentWidth": 1440,
+          "viewportWidth": 1440,
+          "diagrams": 1
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "pageWidth": 1920,
+      "frames": [
+        {
+          "title": "MAXIS high-level ecosystem flowchart",
+          "height": 1689,
+          "contentHeight": 1689,
+          "contentWidth": 1920,
+          "viewportWidth": 1920,
+          "diagrams": 1
+        },
+        {
+          "title": "MAXIS detailed membrane and UV prototype flowchart",
+          "height": 2016,
+          "contentHeight": 2016,
+          "contentWidth": 1920,
+          "viewportWidth": 1920,
+          "diagrams": 1
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "pageWidth": 768,
+      "frames": [
+        {
+          "title": "MAXIS high-level ecosystem flowchart",
+          "height": 957,
+          "contentHeight": 957,
+          "contentWidth": 768,
+          "viewportWidth": 768,
+          "diagrams": 1
+        },
+        {
+          "title": "MAXIS detailed membrane and UV prototype flowchart",
+          "height": 1740,
+          "contentHeight": 1740,
+          "contentWidth": 768,
+          "viewportWidth": 768,
+          "diagrams": 1
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "hash": "#prototype",
+    "prototypeTop": 78.40625
+  }
+}
